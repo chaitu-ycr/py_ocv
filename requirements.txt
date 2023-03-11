@@ -1,6 +1,9 @@
-pylint
+wheel
 pytest
-flit
+pylint
+matplotlib
+numpy
+opencv-contrib-python==4.6.0.66
 mkdocs
 mkdocstrings
 mkdocs-material

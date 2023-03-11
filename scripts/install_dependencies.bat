@@ -6,7 +6,7 @@ cd %file_dir%
 cd ..
 set root_folder=%CD%
 set working_dir=%root_folder%
-set python_venv_path=%working_dir%\venv
+set python_venv_path=%working_dir%\.venv
 set python_exe=%python_venv_path%\Scripts\python.exe
 
 :PYTHON_VENV
@@ -16,11 +16,12 @@ if exist %python_venv_path% (
 	echo ----------------------------------- PIP VENV FOUND -----------------------------------
 	echo "Python virtual env path '%python_exe%' exists on machine"
 	echo.
-	echo "Upgrading Python PIP module"
+	echo "Upgrading Python PIP module and install wheel"
 	%python_exe% -m pip install pip --upgrade
+	%python_exe% -m pip install wheel --upgrade
 	echo.
 	echo "installing/upgrading pip dependencies"
-	%python_exe% -m pip install  -r %root_folder%\requirements.txt --upgrade
+	%python_exe% -m pip install  -r %root_folder%\requirements.txt
 	echo "completed installing project pip dependencies..."
 ) else (
     GOTO :VENV_ERROR
